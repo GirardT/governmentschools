@@ -1,4 +1,5 @@
 """A script that processes the input CSV files and copies them into a SQLite database."""
+"""https://github.com/zblesk/csv-to-sqlite"""
 import csv
 import sqlite3
 import os
