@@ -55,7 +55,7 @@ class GovernmentSchools(Resource):
     def get(self, SUBURB):
         db = get_db()
         details_cur = db.execute(
-            'select * from [master_dataset] where Town_suburb = ? COLLATE NOCASE COLLATE RTRIM', [SUBURB])
+            'select * from [master_dataset] where lower(rtrim(Town_suburb)) = lower(rtrim(?))', [SUBURB])
         details = details_cur.fetchall()
 
         return_values = []
