@@ -27,7 +27,7 @@ class GovernmentSchoolsAll(Resource):
     @api.doc(description='Retrieving all records from the database for all suburbs.')
     def get(self):
         db = get_db()
-        details_cur = db.execute('select * from [master_dataset]')
+        details_cur = db.execute('SELECT * FROM [master_dataset]')
         details = details_cur.fetchall()
 
         return_values = []
@@ -55,7 +55,7 @@ class GovernmentSchools(Resource):
     def get(self, SUBURB):
         db = get_db()
         details_cur = db.execute(
-            'select * from [master_dataset] where lower(rtrim(Town_suburb)) = lower(rtrim(?))', [SUBURB])
+            'SELECT * FROM [master_dataset] WHERE rtrim(Town_suburb) = ? COLLATE NOCASE', [SUBURB])
         details = details_cur.fetchall()
 
         return_values = []
